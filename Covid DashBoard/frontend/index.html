@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Covid Dashboard</title>
+</head>
+<body>
+    <header class="header">
+        <h1>Covid-19 Dashboard</h1>
+    </header>
+    <main class="main">
+        <section class="container_section">
+            <article class="container_article">
+                <div class="container_data total_confirmados">
+                    <p>Total Casos</p>
+                    <span id="id_total_casos">0</span>
+                </div>
+                <div class="container_data total_mortes">
+                    <p>Total Mortos</p>
+                    <span id="id_total_mortos">0</span>
+                </div>
+                <div class="container_data total_recuperados">
+                    <p>Total Recuperados</p>
+                    <span id="id_total_recuperados">0</span>
+                </div>
+            </article>
+            <div class="container_data total_ativos">
+                <h3>Total Ativos</h3>
+                <span id="id_total_casos_ativos">0</span>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div>
+            <select class="custom-select" id="combo">
+                <option value="global" selected id='global'>Global</option>
+            </select>            
+        </div>
+        <div>
+            <input id="today" type="date" min="2020-01-01"/>
+        </div>
+    </footer>
+    <script type="module" src="./index.js"></script>
+</body>
+</html>

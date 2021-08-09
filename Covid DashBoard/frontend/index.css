@@ -1,0 +1,170 @@
+
+body{
+    padding: 0px;
+    margin: 0px;
+    background-image: url('./fundo.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: absolute;
+    z-index: 10;
+    
+}
+
+h1, h2, h3, h4, h5, h6, p{
+    padding: 0px;
+    margin: 0px;
+    color: rgb(10, 10, 10);
+}
+
+p{
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+
+.header{    
+    height: 20vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(207, 207, 207, 0.7);
+}
+
+.header h1{
+    font-size: 4em;
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main{
+    background-color: rgba(207, 207, 207, 0.7);
+    height: 70vh;
+    width: 100vw;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container_section{
+    height: 95%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.container_article{
+    height: 50%;
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: row;
+    padding: 20px;    
+}
+
+.container_data{
+    height: 80px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    text-align: center;
+    flex-direction: column;
+}
+
+.container_data > span{
+    margin-top: 5px;
+}
+
+.total_confirmados{
+    background: rgba( 248, 231, 28, 0.30 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2.5px );
+    -webkit-backdrop-filter: blur( 2.5px );
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+}
+
+.total_confirmados:hover{
+    background-color: rgba(248, 231, 28, 0.849);
+    transform: scale(1.02);
+}
+
+.total_mortes{
+    background: rgba( 208, 2, 27, 0.30 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2.5px );
+    -webkit-backdrop-filter: blur( 2.5px );
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+}
+
+.total_mortes:hover{
+    background-color: rgba( 208, 2, 27, 0.849 );
+    transform: scale(1.02);
+}
+
+.total_recuperados{
+    background: rgba( 74, 144, 226, 0.30 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2.5px );
+    -webkit-backdrop-filter: blur( 2.5px );
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+}
+
+.total_recuperados:hover{
+    background-color: rgba( 74, 144, 226, 0.849 );
+    transform: scale(1.02);
+}
+
+.total_ativos h3{
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+.footer{
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: rgba(207, 207, 207, 0.7);
+}
+
+.custom-select{
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    letter-spacing: 2.5px;
+    outline: none;
+    border: none;
+    background-color: rgba(207, 207, 207, 0.7);
+}
+
+.custom-select > option{
+    font-size: 25px;
+    letter-spacing: 2.5px;
+}
+
+#today{
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    letter-spacing: 2.5px;
+    outline: none;
+    border: none;
+    background-color: rgba(207, 207, 207, 0.7);
+}
+
