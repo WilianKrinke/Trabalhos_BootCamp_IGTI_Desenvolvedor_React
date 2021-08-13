@@ -4,17 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/home.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js" integrity="sha512-F+u8eWHrfY8Xw9BLzZ8rG/0wIvs0y+JyRJrXjp3VjtFPylAEEGwKbua5Ip/oiVhaTDaDs4eU2Xtsxjs/9ag2bQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Covid DashBoard 2.0</title>
 </head>
+<style>
+    body{
+        padding: 0px;
+        margin: 0px;
+    }
+
+    h1,h2,h3,h4,h5,h6,p{
+        padding: 0px;
+        margin: 0px;
+    }
+
+    *{
+        box-sizing: border-box;
+    }
+    
+    .header{
+        height: 10vh;
+        width: 100vw;
+        background-color: rgb(39, 39, 39);
+    }
+
+    .footer{
+        height: 5vh;
+        width: 100vw;
+        background-color: rgb(39, 39, 39);
+    }
+
+    .main{
+        height: 85vh;
+        width: 100vw;
+    }
+</style>
 <body>
-    <header class="header">Header e links de navegação</header>
+    <header class="header">
+        <a href="/pais.html">Ir para paises</a>
+        <a href="/topfive.html">Top Five</a>
+    </header>
+    <!-- start no servidor front com npx lite-server -->
     <main class="main">
         <section>
-
             <article>
                 <div>
                     <p>Total de confirmados</p>
@@ -38,6 +72,8 @@
         </section>
     </main>
     <footer class="footer">Footer de boinha</footer>
-    <script src="../js/home.js"></script>
+    <script>
+
+    </script>
 </body>
 </html>
