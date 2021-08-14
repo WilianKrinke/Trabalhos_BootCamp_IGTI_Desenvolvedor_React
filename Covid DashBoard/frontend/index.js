@@ -8,23 +8,12 @@ fetch('https://api.covid19api.com/summary')
     })
     .catch(err => console.log(err))
 
-// fetch('https://api.covid19api.com/total/dayone/country/italy')
-//     .then(resp => resp.json())
-//     .then(json => console.log(json))
-//     .catch(err => console.log(err))
-
-// fetch('https://api.covid19api.com/live/country/italy/status/confirmed')
-//     .then(resp => resp.json())
-//     .then(json => console.log(json))
-//     .catch(err => console.log(err))
-
-
 function loadStatus(data) {
     const globalData = data.Global;
-    const totalConfirmed = globalData.TotalConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-    const totalDeaths = globalData.TotalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-    const totalRecovered = globalData.TotalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-    const newConfrimed = globalData.NewConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+    const totalConfirmed = globalData.TotalConfirmed.toLocaleString("pt-BR")
+    const totalDeaths = globalData.TotalDeaths.toLocaleString("pt-BR")
+    const totalRecovered = globalData.TotalRecovered.toLocaleString("pt-BR")
+    const newConfrimed = globalData.NewConfirmed.toLocaleString("pt-BR")
 
     //DOM El
     const totalCasosEl = document.getElementById('id_total_casos')
@@ -94,10 +83,10 @@ function loadNumbers(datas, selectText) {
     const totalCasosAtivosEl = document.getElementById('id_total_casos_ativos')
 
     const countryData = countries.map(item => {
-        const totalConfirmed = item.TotalConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-        const totalDeaths = item.TotalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-        const totalRecovered = item.TotalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-        const newConfrimed = item.NewConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+        const totalConfirmed = item.TotalConfirmed.toLocaleString("pt-BR")
+        const totalDeaths = item.TotalDeaths.toLocaleString("pt-BR")
+        const totalRecovered = item.TotalRecovered.toLocaleString("pt-BR")
+        const newConfrimed = item.NewConfirmed.toLocaleString("pt-BR")
 
         totalCasosEl.textContent = totalConfirmed == 0 ? "Não há registros" : totalConfirmed;
         totalMortosEl.textContent = totalDeaths == 0 ? "Não há registros" : totalDeaths;
@@ -129,10 +118,10 @@ inputDate.addEventListener('change', () => {
             const totalCasosAtivosEl = document.getElementById('id_total_casos_ativos')
 
             datas.map(item => {
-                const totalConfirmed = item.Confirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-                const totalDeaths = item.Deaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-                const totalRecovered = item.Recovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-                const newConfrimed = item.Active.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+                const totalConfirmed = item.Confirmed.toLocaleString("pt-BR")
+                const totalDeaths = item.Deaths.toLocaleString("pt-BR")
+                const totalRecovered = item.Recovered.toLocaleString("pt-BR")
+                const newConfrimed = item.Active.toLocaleString("pt-BR")
 
                 totalCasosEl.textContent = totalConfirmed == 0 ? "Não há registros" : totalConfirmed;
                 totalMortosEl.textContent = totalDeaths == 0 ? "Não há registros" : totalDeaths;
