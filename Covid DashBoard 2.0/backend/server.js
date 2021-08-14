@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.get('/', async (req,res) => {
     const {data} = await axios.get('https://api.covid19api.com/summary')
-    res.send(data.Global)
+    res.send(data)
 })
 
 app.post('/paises', (req, res) => {

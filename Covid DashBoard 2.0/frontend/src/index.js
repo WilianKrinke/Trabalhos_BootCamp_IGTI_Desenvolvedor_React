@@ -2,10 +2,9 @@ async function getContent() {
     try {
         const response = await fetch('http://localhost:8080/');
         const data = await response.json()
-        console.log(data)
         loadData(data)
         handlePieGraphic(data)
-        handleBarsGraphics()
+        handleBarsGraphics(data)
     } catch (error) {
         console.log(error)
     }
@@ -14,60 +13,16 @@ getContent();
 
 
 const loadData = (data) => {
-
     const totalConfirmadoseEl = document.getElementById('totalConfirmados');
     const totalMortosEl = document.getElementById('totalMortos');
     const totalRecuperados = document.getElementById('totalRecuperados');
     const dataEl = document.querySelector('.date-update');
 
-    totalConfirmadoseEl.textContent = data.TotalConfirmed.toLocaleString("pt-BR")
-    totalMortosEl.textContent = data.TotalDeaths.toLocaleString("pt-BR")
-    totalRecuperados.textContent = data.TotalRecuperados
-    dataEl.textContent = `Data Atualizada: ${data.DataAtualizada}`
+    totalConfirmadoseEl.textContent = data.Global.TotalConfirmed.toLocaleString("pt-BR")
+    totalMortosEl.textContent = data.Global.TotalDeaths.toLocaleString("pt-BR")
+    totalRecuperados.textContent = (data.Global.TotalConfirmed - data.Global.TotalDeaths).toLocaleString("pt-BR")
+    dataEl.textContent = `Data Atualizada: ${data.Global.Date.toLocaleString("pt-BR")}`
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -80,7 +35,7 @@ const loadData = (data) => {
 
 
 //Graphicos
-const handlePieGraphic = (nums) => {
+const handlePieGraphic = (numbers) => {
     let pieChart = new Chart(document.getElementById('novocasospizza'),{
         type: 'pie',
         data: {
@@ -88,7 +43,7 @@ const handlePieGraphic = (nums) => {
             datasets: [
                 {
                     label: ['Confirmados','Recuperados','Mortes'],
-                    data: [nums.TotalConfirmados, nums.TotalRecuperados, nums.TotalMortos],
+                    data: [numbers.Global.TotalConfirmed, (numbers.Global.TotalConfirmed - numbers.Global.TotalDeaths), numbers.Global.TotalDeaths],
                     backgroundColor: ['rgb(223, 223, 223)','rgb(0, 255, 0)','rgb(255, 0, 0)'],
                 }
             ]
@@ -110,16 +65,19 @@ const handlePieGraphic = (nums) => {
 }
 
 
-const handleBarsGraphics = () => {
+const handleBarsGraphics = (datas) => {
+    const tenCountriesDeath = topTenCountriesDeath(datas.Countries)
+    const country = tenCountriesDeath.map(item => item.Country)
+    const numbers = tenCountriesDeath.map(item => item.TotalDeaths)
     let bars = new Chart(document.getElementById('barrastop10'), {
         type: 'bar',
         data: {
-            labels: ['Pais1','Pais2','Pais3','Pais4','Pais5','Pais6','Pais7','Pais8','Pais9','Pais10'],
+            labels: [country[0],country[1],country[2],country[3],country[4],country[5],country[6],country[7],country[8],country[9]],
             datasets: [
                 {
-                    label: 'Teste',
-                    data: [10,20,30,40,50,60,70,80,90,100],
-                    backgroundColor: '#ccc'
+                    label: 'Total de Mortos',
+                    data: [numbers[0],numbers[1],numbers[2],numbers[3],numbers[4],numbers[5],numbers[6],numbers[7],numbers[8],numbers[9]],
+                    backgroundColor: '#5d6063'
                 }
             ]
         },
@@ -136,6 +94,29 @@ const handleBarsGraphics = () => {
           }
         }
     })
+}
+
+function topTenCountriesDeath(data) {
+  const deaths = data.map(item => {
+    return item.TotalDeaths
+  })
+  function comparaNum(a,b) {
+    return a - b;
+  }  
+  const topTenDeathsNumbers = deaths.sort(comparaNum).reverse().splice(0,10)
+
+  let count = 0
+  let topTen = []
+  while (count < 10) {
+    data.filter(item => {
+      if (item.TotalDeaths == topTenDeathsNumbers[count]) {
+        topTen.push(item)
+      }
+    })
+    count++
+  }  
+
+  return topTen;
 }
 
 
