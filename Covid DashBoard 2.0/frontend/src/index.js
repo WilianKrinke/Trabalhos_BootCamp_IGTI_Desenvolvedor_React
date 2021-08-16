@@ -11,7 +11,6 @@ async function getContent() {
 }
 getContent();
 
-
 const loadData = (data) => {
     const totalConfirmadoseEl = document.getElementById('totalConfirmados');
     const totalMortosEl = document.getElementById('totalMortos');
@@ -24,17 +23,7 @@ const loadData = (data) => {
     dataEl.textContent = `Data Atualizada: ${data.Global.Date.toLocaleString("pt-BR")}`
 }
 
-
-
-
-
-
-
-
-
-
-
-//Graphicos
+//Graficos
 const handlePieGraphic = (numbers) => {
     let pieChart = new Chart(document.getElementById('novocasospizza'),{
         type: 'pie',
@@ -63,7 +52,6 @@ const handlePieGraphic = (numbers) => {
       },
     })
 }
-
 
 const handleBarsGraphics = (datas) => {
     const tenCountriesDeath = topTenCountriesDeath(datas.Countries)
@@ -115,7 +103,6 @@ function topTenCountriesDeath(data) {
     })
     count++
   }  
-
   return topTen;
 }
 

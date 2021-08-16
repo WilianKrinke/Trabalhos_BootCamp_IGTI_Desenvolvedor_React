@@ -41,7 +41,7 @@
     <main class="main">
         <section class="section-form">
             <article class="article-form">
-                <form  action="http://localhost:8080/paises" method="POST" class="form">
+                
                     <div>
                         <label>Data Inicial: </label>
                         <input type="date" name="initialDate" id="initialDate">
@@ -52,37 +52,39 @@
                     </div>
                     <div>
                         <label>Pais: </label>
-                        <select name="pais">
-                            <option value="brazil">Brazil</option>
+                        <select name="pais" id="selectPais">
+                            <option value="brazil" id="option">Brazil</option>
                         </select>
                     </div>
                     <div>
                         <label>Dados: </label>
-                        <select name="dataType">
-                            <option value="numObitos">Números de Óbitos</option>
+                        <select name="dataType" id="selectDados">
+                            <option value="numMortos">Números de Mortos</option>
+                            <option value="numRecuperados">Números de Recuperados</option>
+                            <option value="numCasosConfirmados">Números de Casos Confirmados</option>
                         </select>
                     </div>
-                    <button>Aplicar</button>                    
-                </form>
+                    <button id="btn">Aplicar</button>                    
+                
             </article>
         </section>
 
         <section class="section-grafhics">
             <article class="article-graphic">
-                <canvas id="line-graphic" height="100">Grafico de linhas</canvas>
+                <canvas id="line-graphic" height="100" class="canvas">Grafico de linhas</canvas>
             </article>
             <article class="article-datas">
                 <div class="container-datas">
-                    <p>Total de confirmados por país</p>
-                    <span>0</span>
+                    <p>Total de Casos Confirmados por País</p>
+                    <span id="totalCasosConfirmados">0</span>
                 </div>
                 <div class="container-datas">
-                    <p>Total de mortos por país</p>
-                    <span>0</span>
+                    <p>Total de Mortos por País</p>
+                    <span id="totalDeaths">0</span>
                 </div>
                 <div class="container-datas">
-                    <p>Total de recuperados por país</p>
-                    <span>0</span>
+                    <p>Total de Recuperados por País</p>
+                    <span id="totalRecovered">0</span>
                 </div>
             </article>            
         </section>

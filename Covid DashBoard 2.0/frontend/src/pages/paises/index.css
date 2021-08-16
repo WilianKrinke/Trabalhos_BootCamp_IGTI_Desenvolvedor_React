@@ -46,16 +46,18 @@
 }
 
 .section-form{
-    border: 1px solid;
     width: 25%;
     height: 100%;
     background-color: rgb(255, 251, 202);
     border-radius: 5px;
     margin: 0px 2px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .section-grafhics{
-    border: 1px solid;
     width: 75%;
     height: 100%;
     display: flex;
@@ -102,9 +104,9 @@
 
 .article-form{
     width: 100%;
-    height: 100%;
+    height: 60%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
 }
@@ -123,6 +125,3 @@
     height: 40px;
 }
 
-#line-graphic{
-    border: 1px solid;
-}
