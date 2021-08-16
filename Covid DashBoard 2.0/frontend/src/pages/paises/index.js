@@ -58,6 +58,47 @@ async function insertCountriesDataBrazil() {
     initialHandlePieGraphic(data, dataAtual)
 }
 
+/*--------------------------------------------------------------------------------------------------------*/
+//Grafico Inicial
+const initialHandlePieGraphic = async (data, todayDate) => {
+
+    
+    const dataFiltered = data.filter(item => {
+        if (item.Date == `${todayDate}T00:00:00Z`) {
+            return item
+        }        
+    })
+
+    new Chart(document.getElementById('line-graphic'),{
+        type: 'line',
+        data: {
+            labels: '',
+            datasets: [{
+                label: 'Brazil',
+                data: dataFiltered,
+                fill: false,
+                borderColor: 'rgb(80, 80, 79)',
+                tension: 0.1,
+                backGroundColor: 'rgb(80, 80, 79)'
+              }]            
+        },
+
+        options: {
+            cutoutPercentage: 0,
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Dados Iniciais Totais'
+                }
+            }
+        },
+    })
+}
+
 
 /*-----------------------------------------------------------------------------------------------------*/
 //Load de Evento de Click
@@ -92,61 +133,14 @@ document.getElementById('btn').addEventListener('click', async () => {
     //Tipo de dado exibido no gráfico
     const selectDados = document.getElementById('selectDados');
     const optionType = selectDados.selectedOptions[0];
-    const typeData = optionType.value.toLowerCase();
+    const typeData = optionType.value.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const labelName = optionType.textContent;
 
     //Passar para gráfico, pais, tipo de dados, e os dados
-    onClickHandlePieGraphic(pais,typeData,data)
+    onClickHandlePieGraphic(pais,typeData,data,labelName)
 })
 
-
-/*--------------------------------------------------------------------------------------------------------*/
-//Grafico Inicial
-const initialHandlePieGraphic = async (data, todayDate) => {
-
-    
-    const dataFiltered = data.filter(item => {
-        if (item.Date == `${todayDate}T00:00:00Z`) {
-            return item
-        }        
-    })
-    
-    console.log(dataFiltered)
-    
-    
-
-    new Chart(document.getElementById('line-graphic'),{
-        type: 'line',
-        data: {
-            labels: '',
-            datasets: [{
-                label: 'Brazil',
-                data: dataFiltered,
-                fill: false,
-                borderColor: 'rgb(80, 80, 79)',
-                tension: 0.1,
-                backGroundColor: 'rgb(80, 80, 79)'
-              }]            
-        },
-
-        options: {
-            cutoutPercentage: 0,
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'Todos'
-                }
-            }
-        },
-    })
-}
-
-
-
-const onClickHandlePieGraphic = (pais,tipo,data) => {
+const onClickHandlePieGraphic = (pais,tipo,data,labelName) => {
     //Dados Tratados
     const periodoEixoX = data.map(item => item.Date.slice(0,10))
 
@@ -163,7 +157,7 @@ const onClickHandlePieGraphic = (pais,tipo,data) => {
             });
         break;
 
-        case 'nummnumrecuperadosortos':
+        case 'numrecuperados':
             arrRecovered.map(element => {
                 dadosPrincipalDoGráfico.push(element)
             });
@@ -213,7 +207,7 @@ const onClickHandlePieGraphic = (pais,tipo,data) => {
                     },
                     title: {
                         display: true,
-                        text: tipo
+                        text: labelName
                     }
                 }
             },
@@ -251,7 +245,7 @@ const onClickHandlePieGraphic = (pais,tipo,data) => {
                     },
                     title: {
                         display: true,
-                        text: tipo
+                        text: labelName
                     }
                 }
             },
