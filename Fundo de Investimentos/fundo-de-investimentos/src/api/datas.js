@@ -661,7 +661,9 @@ export function getBackend() {
             ...item, 
             initialValue, 
             finalValue,
-            totalPercent }
+            totalPercent,
+          },
+          reports: filteredReports
         }
       )
   }
