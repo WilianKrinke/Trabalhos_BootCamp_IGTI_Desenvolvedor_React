@@ -6,17 +6,16 @@ const Cards = ({nameCandidate,votes,indexArr,percentageVotes}) => {
 
     return (
         <CardsStyled>
-            <div className='container'>
-                <img src="" alt="Imagem" />
-                <div className="container_info">
-                    <p>{percentageVotes} % do votos</p>
-                    <p>Votos Recebidos: {votes.toLocaleString('PT')}</p>
-                </div>
-            </div>
             <div className="container_nameinfo">
                 <p>{nameCandidate}</p>
                 <p>{indexArr === 0 ? 'Eleito' : 'Não Eleito'}</p>
             </div>
+            <div className='container'>
+                <div className="container_info">
+                    <p>{percentageVotes} % do votos</p>
+                    <p>Votos Recebidos: {votes.toLocaleString('PT')}</p>
+                </div>
+            </div>            
         </CardsStyled>
     );
 }

@@ -5,6 +5,7 @@ function insertPercentage(infos) {
 
         element.percentageVotes = percentageVotes
     });
+
     return infos;
 }
 
