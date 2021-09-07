@@ -110,6 +110,10 @@ export const CardsStyled = styled.div`
         p{
             letter-spacing: 2px;
         }
+
+        .imagem{
+            
+        }
     }
 `
 

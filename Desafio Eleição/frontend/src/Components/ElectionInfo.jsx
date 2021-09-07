@@ -11,9 +11,7 @@ const ElectionInfo = ({getIdSelect,numCandidates}) => {
     function StateLifted(idLifted) {
         setValueGetUp(idLifted)
         getIdSelect(idLifted)
-    }
-
-    
+    }    
 
     useEffect(() => {
         getCountrys().then(itens => setDatasCountries(itens))
