@@ -30,17 +30,18 @@ server.use(
   })
 );
 
-server.use(function(req, res, next) {
-  var allowedOrigins = ['http://localhost:3000'];
-  var Origin = req.headers.Origin;
-  if(allowedOrigins.indexOf(Origin) > -1){
-       res.setHeader('Access-Control-Allow-Origin', Origin);
-  }
-  res.header('Access-Control-Allow-Methods', 'GET, OPTIONS, POST, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.header('Access-Control-Allow-Credentials', true);
-  return next();
-});
+//Não funciona com isso
+// server.use(function(req, res, next) {
+//   var allowedOrigins = ['http://localhost:3000'];
+//   var Origin = req.headers.Origin;
+//   if(allowedOrigins.indexOf(Origin) > -1){
+//        res.setHeader('Access-Control-Allow-Origin', Origin);
+//   }
+//   res.header('Access-Control-Allow-Methods', 'GET, OPTIONS, POST, DELETE');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//   res.header('Access-Control-Allow-Credentials', true);
+//   return next();
+// });
 
 server.post("/sessao/criar", (req, res) => {
   const { email, senha } = req.body;
