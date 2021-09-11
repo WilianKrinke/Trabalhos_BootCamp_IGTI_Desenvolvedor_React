@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { FooterComp, MainComp } from '../Home/styled';
 import LogOffButton from '../../Components/LogOffButton'
@@ -15,9 +16,7 @@ const Despesas = () => {
 
     const [infoDatas, setinfoDatas] = useState([]);
 
-    useEffect(() => {
-        fetch('http://localhost:3001/despesas').then(res => console.log(res.json()))
-    }, []);
+    
 
 
 
