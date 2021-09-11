@@ -12,11 +12,11 @@ function App() {
 
   
   useEffect(() => {
-
     isAuth().then(resp => {
-      console.log('ola')
+      console.log('Logado')
       setHasSession(true)
     }, () => {
+      console.log('Não Logado')
       setHasSession(false)
     })
 
