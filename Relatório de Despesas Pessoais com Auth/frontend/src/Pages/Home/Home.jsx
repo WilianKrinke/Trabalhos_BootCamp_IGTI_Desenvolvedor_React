@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import doAuth from '../../utils/doAuth';
@@ -10,7 +9,6 @@ const Home = () => {
 
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-    const [erro, setErro] = useState('');
 
     useEffect(() => {
         isAuth().then(resp => {

@@ -30,9 +30,6 @@ const Despesas = () => {
         
     }, [history]);
 
-
-
-
     function getSelectParams(ano, mes) {
         console.log(ano)
         console.log(mes)
@@ -49,7 +46,6 @@ const Despesas = () => {
     }
 
 
-    
     return (
         <>
         {loading ?
