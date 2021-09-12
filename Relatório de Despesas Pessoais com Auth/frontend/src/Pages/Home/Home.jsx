@@ -6,9 +6,9 @@ import {HeaderComp, MainComp, FooterComp, ButtonComp} from './styled'
 
 const Home = () => {
     const history = useHistory()
-
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+    const [erro, setErro] = useState(false);
 
     useEffect(() => {
         isAuth().then(resp => {
@@ -30,6 +30,7 @@ const Home = () => {
             history.push('/despesas')
         },(err) => {
             console.error(err)
+            setErro(true)
         })
     }
 
@@ -62,6 +63,7 @@ const Home = () => {
                         <p>Usuario Teste: usuario@email.com</p>
                         <p>Senha Teste: 1234</p>
                     </article>
+                        {erro && <p>Usuario ou Senha incorretos</p>}                        
                 </section>
             </MainComp>
             <FooterComp/>
