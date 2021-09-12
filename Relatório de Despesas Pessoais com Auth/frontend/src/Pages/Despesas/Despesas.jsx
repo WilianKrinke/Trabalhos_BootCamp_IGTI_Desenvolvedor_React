@@ -4,20 +4,31 @@ import { FooterComp, MainComp } from '../Home/styled';
 import LogOffButton from '../../Components/LogOffButton'
 import { HeaderCompDesp, SectionTable, SelectButtonDetails, SelectButtonResume, SelectSection } from './styled';
 import SelectOption from '../../Components/SelectOption';
+import isAuth from '../../utils/isAuth';
+import { useHistory } from 'react-router';
 
 const Despesas = () => {
+    const history = useHistory()
 
     const [resumeOrDetail, setResumeOrDetail] = useState(true);
-
-    
+    const [loading, setLoading] = useState(true);
 
     const [month, setMonth] = useState('01');
     const [year, setYear] = useState('2021');
-
     const [infoDatas, setinfoDatas] = useState([]);
 
-    
-
+    useEffect(() => {
+        isAuth().then(resp => {
+            if (resp.status === 401) {
+                console.log('Não Logado')
+                history.push('/')
+            } else {
+                console.log('Logado')
+                setLoading(false)
+            }
+        })     
+        
+    }, [history]);
 
 
 
@@ -41,40 +52,40 @@ const Despesas = () => {
     
     return (
         <>
-           <HeaderCompDesp>
-                <h4>Olá {localStorage.getItem('user')}</h4>
-                <LogOffButton />
-            </HeaderCompDesp>
-            <MainComp>
-
-                <SelectSection>
-                    <article>
-                        <SelectOption getSelectParams={getSelectParams}/>
-                    </article>
-                    <article>
-                        <p>Total de Despesas das categorias</p>
-                    </article>
-                </SelectSection>
-
-                <SectionTable>
-                        <article className="resume_details">
-                            <SelectButtonResume onClick={e => infoResume(e)} resumeOrDetail={resumeOrDetail}>
-                                <p>Resumo</p>
-                            </SelectButtonResume >
-                            <SelectButtonDetails onClick={e => infoDetail(e)} resumeOrDetail={resumeOrDetail}>
-                                <p>Detalhe</p>
-                            </SelectButtonDetails >
+        {loading ?
+            <h1>Loading...</h1>
+        : 
+            <>
+                <HeaderCompDesp>
+                    <LogOffButton />
+                </HeaderCompDesp>
+                <MainComp>
+                    <SelectSection>
+                        <article>
+                            <SelectOption getSelectParams={getSelectParams}/>
                         </article>
-                        <article className="table">
-                            {/* tabela de categoria e valor */}
+                        <article>
+                            <p>Total de Despesas das categorias</p>
                         </article>
-                </SectionTable>
+                    </SelectSection>
 
-            </MainComp>
-
-            <FooterComp />
-            
-           
+                    <SectionTable>
+                            <article className="resume_details">
+                                <SelectButtonResume onClick={e => infoResume(e)} resumeOrDetail={resumeOrDetail}>
+                                    <p>Resumo</p>
+                                </SelectButtonResume >
+                                <SelectButtonDetails onClick={e => infoDetail(e)} resumeOrDetail={resumeOrDetail}>
+                                    <p>Detalhe</p>
+                                </SelectButtonDetails >
+                            </article>
+                            <article className="table">
+                                {/* tabela de categoria e valor */}
+                            </article>
+                    </SectionTable>
+                </MainComp>
+                <FooterComp />
+            </>
+        }
         </>
     );
 }

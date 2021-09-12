@@ -2,19 +2,34 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import doAuth from '../../utils/doAuth';
+import isAuth from '../../utils/isAuth';
 import {HeaderComp, MainComp, FooterComp, ButtonComp} from './styled'
 
 const Home = () => {
+    const history = useHistory()
 
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-
     const [erro, setErro] = useState('');
+
+    useEffect(() => {
+        isAuth().then(resp => {
+            if (resp.status === 401) {
+                console.log('Não Logado')
+                
+            } else {
+                console.log('Logado')
+                history.push('/despesas')
+            }
+        })  
+        
+    }, [history]);
 
     const signIn = (e) => {
         e.preventDefault()
         doAuth(email, pass).then(res => {
             console.log(res)
+            history.push('/despesas')
         },(err) => {
             console.error(err)
         })

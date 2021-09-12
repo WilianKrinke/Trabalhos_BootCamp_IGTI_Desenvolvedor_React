@@ -3,7 +3,7 @@ const fs = require("fs");
 const bodyParser = require("body-parser");
 const jsonServer = require("json-server");
 const session = require("express-session");
-const cors = require('cors')
+
 
 const server = jsonServer.create();
 
@@ -13,7 +13,6 @@ const userdb = JSON.parse(fs.readFileSync("./users.json", "UTF-8"));
 server.use(jsonServer.defaults());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
-server.use(cors())
 const SECRET_KEY = "aFuhVas87asd62kjsDf";
 
 function findUser({ email, senha }) {
@@ -29,19 +28,6 @@ server.use(
     saveUninitialized: false /*, cookie: {maxAge: 5000}*/,
   })
 );
-
-//Não funciona com isso
-// server.use(function(req, res, next) {
-//   var allowedOrigins = ['http://localhost:3000'];
-//   var Origin = req.headers.Origin;
-//   if(allowedOrigins.indexOf(Origin) > -1){
-//        res.setHeader('Access-Control-Allow-Origin', Origin);
-//   }
-//   res.header('Access-Control-Allow-Methods', 'GET, OPTIONS, POST, DELETE');
-//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//   res.header('Access-Control-Allow-Credentials', true);
-//   return next();
-// });
 
 server.post("/sessao/criar", (req, res) => {
   const { email, senha } = req.body;

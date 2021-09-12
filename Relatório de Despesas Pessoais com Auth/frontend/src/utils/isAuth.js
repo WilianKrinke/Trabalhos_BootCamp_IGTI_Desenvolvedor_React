@@ -4,10 +4,10 @@ export default function isAuth() {
         method: 'GET'
     })
         .then(resp => {
-            if (resp) {                
+            if (resp.ok) {                
                 return resp.json()
             } else {
-                throw new Error(resp.statusText)
+                return resp
             }
         })
 }
