@@ -17,7 +17,6 @@ export const HeaderCompDesp = styled.header`
 `
 
 export const SelectSection = styled.section`
-    border: 1px solid;
     width: 100%;
     height: 70px;
     display: flex;
@@ -28,9 +27,7 @@ export const SelectSection = styled.section`
 `
 
 export const SectionTable = styled.section`
-    border: 1px solid;
     width: 100%;
-    height: 500px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -39,14 +36,13 @@ export const SectionTable = styled.section`
     padding: 20px;
 
     .resume_details{
-        border: 1px solid;
         width: 100%;
         height: 100px;
         padding: 20px;
     }
 
     .table{
-        border: 1px solid;
+        min-height: 500px;
         width: 100%;
     }
 `
@@ -56,19 +52,12 @@ export const SelectButtonResume = styled.button`
     width: 150px;
     margin: 10px;
     border: none;
-    border-bottom: ${props => props.resumeOrDetail ? '1px solid #3d0606' : 'none'};
+    border-bottom: ${props => props.resumeOrDetails ? '1px solid #3d0606' : 'none'};
     background-color: transparent;
     cursor: pointer;
     transition: all .1s ease-in-out;
-    
-    :hover{
-        background-color: rgba(82, 82, 82, 0.11);
-    }
-
-    p{
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
+    text-transform: uppercase;
+    letter-spacing: 2px;
 `
 
 export const SelectButtonDetails = styled.button`   
@@ -76,17 +65,14 @@ export const SelectButtonDetails = styled.button`
     width: 150px;
     margin: 10px;
     border: none;
-    border-bottom: ${props => !props.resumeOrDetail ? '1px solid #3d0606' : 'none'};
+    border-bottom: ${props => !props.resumeOrDetails ? '1px solid #3d0606' : 'none'};
     background-color: transparent;
     cursor: pointer;
-    transition: all .1s ease-in-out;
-    
-    :hover{
-        background-color: rgba(82, 82, 82, 0.11);
-    }
+    text-transform: uppercase;
+    letter-spacing: 2px;   
+`
 
-    p{
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
+export const LogOffButtonStyled = styled.button`
+    height: 30px;
+    width: 150px;
 `

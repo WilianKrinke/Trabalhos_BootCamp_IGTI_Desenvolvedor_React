@@ -9,5 +9,7 @@ export default function isAuth() {
             } else {
                 return resp
             }
+        }, (err) => {
+            console.log(err)
         })
 }

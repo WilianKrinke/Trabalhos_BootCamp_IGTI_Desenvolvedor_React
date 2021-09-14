@@ -10,14 +10,14 @@ const SelectOption = ({getSelectParams}) => {
 
     return (
         <>
-            <div>
-                <label htmlFor="ano">Ano</label>
+            <section>
+                <label htmlFor="ano">Ano: </label>
                 <select name="ano" id="ano" onChange={e => setvalueOfYear(e.target.value)}>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
                 </select>
 
-                <label htmlFor="mes">Mês</label>
+                <label htmlFor="mes">Mês: </label>
                 <select name="mes" id="mes" onChange={e => setvalueOfMonth(e.target.value)}>
                     <option value="01">Janeiro</option>
                     <option value="02">Fevereiro</option>
@@ -32,7 +32,7 @@ const SelectOption = ({getSelectParams}) => {
                     <option value="11">Novembro</option>
                     <option value="12">Dezembro</option>
                 </select>
-            </div> 
+            </section> 
         </>
     );
 }

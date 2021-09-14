@@ -19,8 +19,7 @@ const Home = () => {
                 console.log('Logado')
                 history.push('/despesas')
             }
-        })  
-        
+        }) 
     }, [history]);
 
     const signIn = (e) => {
@@ -33,7 +32,6 @@ const Home = () => {
             setErro(true)
         })
     }
-
 
     return (
         <>

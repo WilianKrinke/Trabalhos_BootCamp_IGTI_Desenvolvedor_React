@@ -1,87 +1,115 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { FooterComp, MainComp } from '../Home/styled';
-import LogOffButton from '../../Components/LogOffButton'
-import { HeaderCompDesp, SectionTable, SelectButtonDetails, SelectButtonResume, SelectSection } from './styled';
-import SelectOption from '../../Components/SelectOption';
-import isAuth from '../../utils/isAuth';
 import { useHistory } from 'react-router';
+import SelectOption from '../../Components/SelectOption';
+import TableComp from '../../Components/TableComp';
+import getDespesasByMonthYear from '../../utils/despesasByMonthYear';
+import getDespesasDatails from '../../utils/despesasDetails';
+import isAuth from '../../utils/isAuth';
+import logOff from '../../utils/logOff';
+import { FooterComp, MainComp } from '../Home/styled';
+import { HeaderCompDesp, LogOffButtonStyled, SectionTable, SelectButtonDetails, SelectButtonResume, SelectSection } from './styled';
 
 const Despesas = () => {
     const history = useHistory()
-
-    const [resumeOrDetail, setResumeOrDetail] = useState(true);
     const [loading, setLoading] = useState(true);
 
+    const [resumeOrDetails, setResumeOrDetails] = useState('Resume');
     const [month, setMonth] = useState('01');
     const [year, setYear] = useState('2021');
-    const [infoDatas, setinfoDatas] = useState([]);
+    const [boolToResumeOrDetails, setBoolToResumeOrDetails] = useState(true);
+
+    const [resumedDatas, setResumedDatas] = useState([]);
+    const [detailsDatas, setDetailsDatas] = useState([]);
+    const [consumed, setConsumed] = useState(true);
 
     useEffect(() => {
         isAuth().then(resp => {
             if (resp.status === 401) {
-                console.log('Não Logado')
                 history.push('/')
             } else {
-                console.log('Logado')
+                getDespesasByMonthYear(year,month,resumeOrDetails).then(resp => {
+                    setResumedDatas(resp)
+                    setConsumed(false)
+                })
+                getDespesasDatails(year,month,resumeOrDetails).then(resp => {
+                    setDetailsDatas(resp)
+                    setConsumed(false)
+                })
                 setLoading(false)
             }
-        })     
+        })
         
-    }, [history]);
+        
+
+        
+
+
+    }, [history,year,month,resumeOrDetails]);
+
+    const selectDetailOrResume = (e) => {
+        e.preventDefault()
+        const btnTextSelected = e.target.textContent
+        console.log(btnTextSelected)
+        setResumeOrDetails(btnTextSelected)
+        btnTextSelected === "Resume" && setBoolToResumeOrDetails(true)
+        btnTextSelected === "Details" && setBoolToResumeOrDetails(false)
+    }
 
     function getSelectParams(ano, mes) {
-        console.log(ano)
-        console.log(mes)
-    }
-
-    const infoResume = (e) => {
-        e.preventDefault()
-        setResumeOrDetail(true)
-    }
-
-    const infoDetail = (e) => {
-        e.preventDefault()
-        setResumeOrDetail(false)
+        setYear(ano)
+        setMonth(mes)
     }
 
 
     return (
         <>
-        {loading ?
-            <h1>Loading...</h1>
-        : 
-            <>
-                <HeaderCompDesp>
-                    <LogOffButton />
-                </HeaderCompDesp>
-                <MainComp>
-                    <SelectSection>
-                        <article>
-                            <SelectOption getSelectParams={getSelectParams}/>
-                        </article>
-                        <article>
-                            <p>Total de Despesas das categorias</p>
-                        </article>
-                    </SelectSection>
+            {loading ?
+                <h1>Loading...</h1>
+            : 
+                <>
+                    <HeaderCompDesp>
+                        <LogOffButtonStyled onClick={e => logOff(e,history)}>
+                            LogOff
+                        </LogOffButtonStyled>
+                    </HeaderCompDesp>
+                    <MainComp>
+                        <SelectSection>
+                            <article>
+                                <SelectOption getSelectParams={getSelectParams}/>
+                            </article>
+                            <article>
+                                {consumed ? 
+                                    <p>Total de Despesas das categorias R$ 0</p>
+                                :
+                                    <p>Total de Despesas das categorias R$ {resumedDatas
+                                        .map(item => parseFloat(item.valor))
+                                        .reduce((acc,curr) => acc + curr).toLocaleString('PT')}</p>
+                                }
+                            </article>
+                        </SelectSection>
 
-                    <SectionTable>
-                            <article className="resume_details">
-                                <SelectButtonResume onClick={e => infoResume(e)} resumeOrDetail={resumeOrDetail}>
-                                    <p>Resumo</p>
-                                </SelectButtonResume >
-                                <SelectButtonDetails onClick={e => infoDetail(e)} resumeOrDetail={resumeOrDetail}>
-                                    <p>Detalhe</p>
-                                </SelectButtonDetails >
-                            </article>
-                            <article className="table">
-                                {/* tabela de categoria e valor */}
-                            </article>
-                    </SectionTable>
-                </MainComp>
-                <FooterComp />
-            </>
-        }
+                        <SectionTable>
+                                <article className="resume_details">
+                                    <SelectButtonResume onClick={e => selectDetailOrResume(e)} resumeOrDetails={boolToResumeOrDetails}>
+                                       Resume
+                                    </SelectButtonResume >
+                                    <SelectButtonDetails onClick={e => selectDetailOrResume(e)} resumeOrDetails={boolToResumeOrDetails}>
+                                        Details
+                                    </SelectButtonDetails >
+                                </article>
+                                <article className="table">
+                                    {
+                                        resumeOrDetails === "Resume" ?
+                                            <TableComp datas={resumedDatas} resumeOrDetails={resumeOrDetails} />
+                                        :                                        
+                                            <TableComp datas={detailsDatas} resumeOrDetails={resumeOrDetails} />
+                                    }
+                                </article>
+                        </SectionTable>
+                    </MainComp>
+                    <FooterComp />
+                </>
+            }
         </>
     );
 }

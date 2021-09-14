@@ -20,7 +20,6 @@ export const MainComp = styled.main`
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    border: 1px solid;
 
     form{
         display: flex;
