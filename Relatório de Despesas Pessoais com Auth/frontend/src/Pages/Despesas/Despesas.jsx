@@ -38,6 +38,8 @@ const Despesas = () => {
                 setLoading(false)
             }
         })
+
+       
         
         
 
@@ -78,13 +80,21 @@ const Despesas = () => {
                                 <SelectOption getSelectParams={getSelectParams}/>
                             </article>
                             <article>
-                                {consumed ? 
-                                    <p>Total de Despesas das categorias R$ 0</p>
-                                :
-                                    <p>Total de Despesas das categorias R$ {resumedDatas
-                                        .map(item => parseFloat(item.valor))
-                                        .reduce((acc,curr) => acc + curr).toLocaleString('PT')}</p>
+                                {
+                                    !resumedDatas.length || !detailsDatas.length ?
+                                        <h1>Não há dados para exibir</h1>
+                                    :
+                                        <div>
+                                             {consumed ? 
+                                                 <p>Total de Despesas das categorias R$ 0</p>
+                                             :
+                                                 <p>Total de Despesas das categorias R$ {resumedDatas
+                                                     .map(item => parseFloat(item.valor))
+                                                     .reduce((acc,curr) => acc + curr).toLocaleString('PT')}</p>
+                                            }
+                                        </div>
                                 }
+
                             </article>
                         </SelectSection>
 
@@ -97,14 +107,21 @@ const Despesas = () => {
                                         Details
                                     </SelectButtonDetails >
                                 </article>
-                                <article className="table">
-                                    {
-                                        resumeOrDetails === "Resume" ?
-                                            <TableComp datas={resumedDatas} resumeOrDetails={resumeOrDetails} />
-                                        :                                        
-                                            <TableComp datas={detailsDatas} resumeOrDetails={resumeOrDetails} />
-                                    }
-                                </article>
+
+                                {
+                                    !resumedDatas.length || !detailsDatas.length ? 
+                                        <h1>Não há dados para exibir</h1>
+                                    :
+                                    <article className="table">
+                                        {
+                                            resumeOrDetails === "Resume" ?
+                                                <TableComp datas={resumedDatas} resumeOrDetails={resumeOrDetails} />
+                                            :                                        
+                                                <TableComp datas={detailsDatas} resumeOrDetails={resumeOrDetails} />
+                                        }
+                                    </article>
+                                }
+
                         </SectionTable>
                     </MainComp>
                     <FooterComp />
