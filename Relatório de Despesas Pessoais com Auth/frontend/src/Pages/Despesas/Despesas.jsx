@@ -38,14 +38,6 @@ const Despesas = () => {
                 setLoading(false)
             }
         })
-
-       
-        
-        
-
-        
-
-
     }, [history,year,month,resumeOrDetails]);
 
     const selectDetailOrResume = (e) => {
@@ -61,7 +53,6 @@ const Despesas = () => {
         setYear(ano)
         setMonth(mes)
     }
-
 
     return (
         <>

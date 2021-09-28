@@ -12,8 +12,6 @@ export default function filteredByDetails(datas, mesReferencia) {
    const totalConsumedSaude = saude.map(item => item.valor).reduce((acc,curr) => acc + curr,0).toFixed(2)
    const totalConsumedTransporte = transporte.map(item => item.valor).reduce((acc,curr) => acc + curr,0).toFixed(2)
    
-
-
    const newArr = [
        {id: 1, categoria: "Alimentação", valorTotal: totalConsumedAlimentacao},
        {id: 2, categoria: "Lazer", valorTotal: totalConsumedLazer},
