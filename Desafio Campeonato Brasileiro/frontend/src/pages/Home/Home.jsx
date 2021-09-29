@@ -1,4 +1,5 @@
 import React from 'react';
+import DataComponent from '../../components/DataComponent/DataComponent';
 import OptionComponent from '../../components/OptionComponent/OptionComponent';
 import { FooterStyled, HeaderStyled, MainStyled } from './styled';
 
@@ -10,6 +11,7 @@ const Home = () => {
             </HeaderStyled>
             <MainStyled>
                 <OptionComponent />
+                <DataComponent />
             </MainStyled>
             <FooterStyled>
 
