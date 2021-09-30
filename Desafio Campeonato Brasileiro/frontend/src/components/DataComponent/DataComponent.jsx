@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useContext, useEffect } from 'react';
 import { GlobalStateContext } from '../../context/appContext';
 import getDatas from '../../utils/getDatas';
@@ -10,8 +9,15 @@ const DataComponent = () => {
     const {state: {anoDoCampeonato, rodada}} = context;
     
     useEffect(() => {
-       getDatas(anoDoCampeonato, rodada)
-    }, [anoDoCampeonato,rodada]);
+
+        (async () => {
+            const datasOrdered = await getDatas(anoDoCampeonato, rodada)
+            console.log(datasOrdered)
+            
+        })()
+
+
+    }, [anoDoCampeonato, rodada]);
 
     return (
         <>

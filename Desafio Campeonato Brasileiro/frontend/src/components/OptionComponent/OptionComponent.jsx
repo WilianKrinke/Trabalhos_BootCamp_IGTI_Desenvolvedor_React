@@ -10,26 +10,27 @@ const OptionComponent = () => {
     const [vetorRodadas, setvetorRodadas] = useState([]);
     
     const context = useContext(GlobalStateContext);
-    const {state: {anoDoCampeonato, rodada},stateDispatch} = context;
+    const {state: {anoDoCampeonato, rodada}, stateDispatch} = context;
 
     useEffect(() => {
         const yearsValues = yearGenerator()
         const rodadasValues = rodadaGenerator()
+        
         setvetorYears(yearsValues)
         setvetorRodadas(rodadasValues)
     }, []);
     
     const getSelectionYear = (e) => {
-        const year = e.target.value        
-        getYearToStates(stateDispatch,year)
+        const year = e.target.value 
+        getYearToStates(stateDispatch, year)       
+        
     }
 
     const getSelectionRodadas = (e) => {
         const rodada = e.target.value
-        getNumRodadaToStates(stateDispatch, rodada)
+        getNumRodadaToStates(stateDispatch, rodada)      
     }
 
-    
     return (
         <>
             <StyledSectionOptions>            
