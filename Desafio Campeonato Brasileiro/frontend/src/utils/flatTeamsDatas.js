@@ -22,6 +22,5 @@ export default function flatTeamsDatas(vetorTimesComPontuações) {
         vetorFlatTeamsData.push(uniqueDataTeam)
     });
     const orderedTeamsByPoints = orderTeams(vetorFlatTeamsData)
-
     return orderedTeamsByPoints
 }

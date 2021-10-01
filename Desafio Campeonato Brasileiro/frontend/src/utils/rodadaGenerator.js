@@ -8,8 +8,6 @@ export default function rodadaGenerator() {
         vetorRodadas.push(initialRodada)
         initialRodada += 1;
     }
-
-
     return vetorRodadas.reverse()
 }
 

@@ -8,7 +8,6 @@ export default function yearGenerator() {
         vetorYears.push(initialYear)
         initialYear += 1;
     }
-
     return vetorYears
 }
 

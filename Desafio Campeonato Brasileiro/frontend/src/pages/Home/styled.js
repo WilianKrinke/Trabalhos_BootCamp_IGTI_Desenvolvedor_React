@@ -17,6 +17,15 @@ export const HeaderStyled = styled.header`
         text-transform: uppercase;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
+
+    a{
+        color: #141414;
+        text-decoration: none;
+    }
+
+    a:hover{
+        color: blue;
+    }
 `
 
 export const MainStyled = styled.header`
@@ -30,6 +39,16 @@ export const MainStyled = styled.header`
     text-align: center;
     border-radius: 5px;
     box-shadow: 0px 0px 4px 3px rgba(0,0,0,0.94);
+
+    nav{        
+    }
+
+    li{
+        list-style: none;
+        display: inline;
+        margin: 2px;
+        color: #141414;
+    }
 `
 
 export const FooterStyled = styled.header`

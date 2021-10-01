@@ -21,6 +21,5 @@ export default async function filteredDatasByRodada(rodada = 46, datasJson) {
 
 
    const flatTeamsOrdered = flatTeamsDatas(vetorTimesComPontuações);
-
    return flatTeamsOrdered;
 }

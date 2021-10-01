@@ -5,6 +5,5 @@ export default async function getDatas(year = 2003, rodada = 46) {
     const datasJson = await datas.json()
     
     const filteredTeamsOrdered = filteredDatasByRodada(rodada,datasJson);
-    
     return filteredTeamsOrdered
 }
