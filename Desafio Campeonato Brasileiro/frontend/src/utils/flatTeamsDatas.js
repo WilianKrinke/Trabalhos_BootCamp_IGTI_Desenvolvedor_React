@@ -1,4 +1,5 @@
 import orderTeams from "./orderTeams";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function flatTeamsDatas(vetorTimesComPontuações) {
 
@@ -7,6 +8,7 @@ export default function flatTeamsDatas(vetorTimesComPontuações) {
     vetorTimesComPontuações.forEach(element => {
         
         const uniqueDataTeam = {
+            id: uuidv4(),
             nome_time: element.time,
             total_pontos: element.pontuacao_final_rodada.total_pontos,
             total_vitorias: element.pontuacao_final_rodada.total_vitorias,

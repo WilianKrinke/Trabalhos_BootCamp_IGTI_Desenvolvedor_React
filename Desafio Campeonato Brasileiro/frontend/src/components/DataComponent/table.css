@@ -1,0 +1,11 @@
+.tablecontainer {
+  border: none;
+}
+
+.table {
+  background-color: #8dcafc;
+}
+
+.tablecellhead p {
+  color: #141414;
+}

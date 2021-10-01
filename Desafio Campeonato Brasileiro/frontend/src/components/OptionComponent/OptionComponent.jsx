@@ -1,9 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { getNumRodadaToStates, getYearToStates } from '../../context/actions';
 import { GlobalStateContext } from '../../context/appContext';
+import { StyledSectionInfo, StyledSectionOptions } from './styled';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import rodadaGenerator from '../../utils/rodadaGenerator';
 import yearGenerator from '../../utils/yearGenerator';
-import { StyledSectionInfo, StyledSectionOptions } from './styled';
 
 const OptionComponent = () => {
     const [vetorYears, setvetorYears] = useState([]);
@@ -33,34 +37,54 @@ const OptionComponent = () => {
 
     return (
         <>
-            <StyledSectionOptions>            
-                <p>Escolha um Ano:</p>
-                <select name="year" onChange={e => getSelectionYear(e)}>
-                    {
-                        vetorYears.length === 0 ?
-                            <option value="loading">Loading...</option>
-                        :
-                            vetorYears.map(item => {
-                                return (
-                                    <option value={item} key={item}>{item}</option>
-                                )
-                            })
-                    }
-                </select>
+            <StyledSectionOptions>
+                <article>
+                    <FormControl variant="standard" sx={{ m: 5, minWidth: 140 }}>
+                        <InputLabel id="demo-simple-select-standard-label">Escolha um Ano</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-standard-label"
+                            id="demo-simple-select-standard"
+                            onChange={e => getSelectionYear(e)}
+                            label="year"
+                            defaultValue=""
+                        >
+                            {
+                                vetorYears.length === 0 ?
+                                    <MenuItem value="loading">Loading...</MenuItem>
+                                :
+                                    vetorYears.map(item => {
+                                        return (
+                                            <MenuItem value={item} key={item}>{item}</MenuItem>
+                                        )
+                                    })
+                            }                        
+                        </Select>
+                    </FormControl>
+                </article>            
 
-                <p>Escolha uma rodada:</p>
-                <select name="rodada" onChange={e => getSelectionRodadas(e)}>
-                    {
-                        vetorRodadas.length === 0 ?
-                            <option value="loading">Loading...</option>
-                        :
-                        vetorRodadas.map(item => {
-                            return (
-                                <option value={item} key={item}>{item}</option>
-                            )
-                        })
-                    }
-                </select>
+                <article>
+                    <FormControl variant="standard" sx={{ m: 5, minWidth: 180 }}>
+                        <InputLabel id="demo-simple-select-standard-label">Escolha uma Rodada</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-standard-label"
+                            id="demo-simple-select-standard"
+                            onChange={e => getSelectionRodadas(e)}
+                            label="rodada"
+                            defaultValue=""
+                        >
+                            {
+                                vetorRodadas.length === 0 ?
+                                    <MenuItem value="Loading...">Loading...</MenuItem>
+                                :   
+                                    vetorRodadas.map(item => {
+                                        return (                                       
+                                            <MenuItem value={item} key={item}>{item}</MenuItem>
+                                        )
+                                    })
+                            }                     
+                        </Select>
+                    </FormControl>
+                </article>
             </StyledSectionOptions>
 
             <StyledSectionInfo>
