@@ -40,9 +40,6 @@ export const MainStyled = styled.header`
     border-radius: 5px;
     box-shadow: 0px 0px 4px 3px rgba(0,0,0,0.94);
 
-    nav{        
-    }
-
     li{
         list-style: none;
         display: inline;
