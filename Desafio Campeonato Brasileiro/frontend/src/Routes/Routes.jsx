@@ -13,8 +13,8 @@ const Routes = () => {
                 <Route path="/" component={Home} exact/>
                 <Route path="/secondpage" component={SecondPage} exact/>
                 <Route path="/thirdpage" component={ThirdPage}/>
-                <Route path="/404" component={NotFound}/>
-                <Redirect from="*" to="/404"/>
+                <Route path="/notfound" component={NotFound}/>
+                <Redirect from="*" to="/notfound"/>
             </Switch>
           </BrowserRouter> 
         </>
