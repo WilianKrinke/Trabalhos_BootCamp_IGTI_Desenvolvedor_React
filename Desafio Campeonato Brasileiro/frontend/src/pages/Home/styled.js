@@ -26,6 +26,12 @@ export const HeaderStyled = styled.header`
     a:hover{
         color: blue;
     }
+
+    button{
+        color: #141414;
+        border-radius: 5px;
+        margin: 10px;
+    }
 `
 
 export const MainStyled = styled.header`
@@ -39,9 +45,6 @@ export const MainStyled = styled.header`
     text-align: center;
     border-radius: 5px;
     box-shadow: 0px 0px 4px 3px rgba(0,0,0,0.94);
-
-    nav{        
-    }
 
     li{
         list-style: none;
