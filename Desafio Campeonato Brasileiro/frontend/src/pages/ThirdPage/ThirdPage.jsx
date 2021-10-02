@@ -1,24 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { FooterStyled, HeaderStyled, MainStyled } from '../Home/styled';
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
+import LinkToPage from '../../components/LinkToPage/LinkToPage';
+import HeaderTitle from '../../components/HeaderTitle/HeaderTitle'
 
 const ThirdPage = () => {
     return (
         <>
             <HeaderStyled>
-                <Link to="/secondpage">Ir para a segunda página</Link>
-                <h1>Third Page</h1>
+                <HeaderTitle title={'Desafio React Campeonato Brasileiro'}/>
+                <LinkToPage url={'/secondpage'} title={'Segunda Página'}/>
             </HeaderStyled>
             <MainStyled>
                 <Breadcrumb>
                     <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-                    <span> / </span>
+                    <span> &gt; </span>
                     <Breadcrumb.Item href="/secondpage">Second Page</Breadcrumb.Item>
-                    <span> / </span>
+                    <span> &gt; </span>
                     <Breadcrumb.Item active>Second Page</Breadcrumb.Item>
                 </Breadcrumb>
-                <h3>Nenhum conteudo, pois quero demostrar o componente breadcrumb</h3>
+                <h3>Nenhum conteudo, pois quero demostrar o breadcrumb</h3>
             </MainStyled>
             <FooterStyled />
         </>

@@ -4,9 +4,9 @@ export const HeaderStyled = styled.header`
     max-width: 100vw;
     min-height: 10vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     text-align: center;
     background-color:  #19B5FE;
 
