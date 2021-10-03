@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoChampionshipComponent test component matches snapshot 1 1`] = `
+Array [
+  <h3>
+    Campeonato Brasileiro de 
+    2006
+  </h3>,
+  <h3>
+    38
+    ª Rodada
+  </h3>,
+]
+`;

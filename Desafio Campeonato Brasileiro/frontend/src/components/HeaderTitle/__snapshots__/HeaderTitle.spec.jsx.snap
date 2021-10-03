@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderTitle component matches snapshot 1 1`] = `
+<h1>
+  Desafio React Campeonato Brasileiro
+</h1>
+`;
+
+exports[`HeaderTitle test component matches snapshot 1 1`] = `
+<h1>
+  Desafio React Campeonato Brasileiro
+</h1>
+`;

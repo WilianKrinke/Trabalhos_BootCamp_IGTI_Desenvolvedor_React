@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkToPage component matches snapshot 1 1`] = `
+<a
+  data-testid="routerlink"
+  href="/secondpage"
+  onClick={[Function]}
+>
+  Segunda Página
+</a>
+`;
+
+exports[`LinkToPage component matches snapshot 2 1`] = `
+<a
+  data-testid="routerlink"
+  href="/thirdpage"
+  onClick={[Function]}
+>
+  Terceira Página
+</a>
+`;
+
+exports[`LinkToPage test component matches snapshot 1 1`] = `
+<a
+  data-testid="routerlink"
+  href="/secondpage"
+  onClick={[Function]}
+>
+  Segunda Página
+</a>
+`;
+
+exports[`LinkToPage test component matches snapshot 2 1`] = `
+<a
+  data-testid="routerlink"
+  href="/thirdpage"
+  onClick={[Function]}
+>
+  Terceira Página
+</a>
+`;

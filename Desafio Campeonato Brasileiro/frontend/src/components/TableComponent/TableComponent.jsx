@@ -19,7 +19,6 @@ const TableComponent = () => {
     useEffect(() => {
         (async () => {
             const datasOrdered = await getDatas(anoDoCampeonato, rodada)
-            console.log(datasOrdered)
             setTeamsTableChampionshipVetor(datasOrdered)
         })()
     }, [anoDoCampeonato, rodada]);
