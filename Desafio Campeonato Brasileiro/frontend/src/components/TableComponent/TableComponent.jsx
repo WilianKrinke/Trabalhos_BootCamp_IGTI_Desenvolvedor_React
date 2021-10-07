@@ -23,7 +23,6 @@ const TableComponent = () => {
         })()
     }, [anoDoCampeonato, rodada]);
 
-
     return (
         <>
             <TableContainer component={Paper} className="tablecontainer">
